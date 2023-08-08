@@ -1,0 +1,12 @@
+.Item:not(:last-child){
+margin-bottom: 30px;
+
+}
+
+.Title:not(:last-child){
+    margin-bottom: 20px;
+}
+.Title{
+    font-size: 30px;
+    font-weight: 700;
+}
