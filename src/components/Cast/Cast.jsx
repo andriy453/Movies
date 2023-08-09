@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 import { useParams } from "react-router-dom";
-import axios from 'axios'
+import  axios from 'axios'
 // import css from './Cast.module.css'
 
 function Cast() {
