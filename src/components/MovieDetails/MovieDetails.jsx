@@ -11,7 +11,7 @@ function MovieDetails() {
   const {movieid} = useParams();
   const  movieidFilter = movieid.slice(1, movieid.length);
   const location = useLocation();
-  const navigate = useNavigate();
+  let  navigate = useNavigate();
   const handleClick = () => navigate(location?.state?.from ?? '/');
 
   const [movies, setMovies] = useState([]);
@@ -62,7 +62,7 @@ useEffect(()=>{
         <p>{movies.overview}</p>
         <h3>Genres</h3>
         {genres()?.map((f)=>{
-          return <span>{f}</span>
+          return <span key={f.id}>{f}</span>
         })}
         </div>
         </div>
