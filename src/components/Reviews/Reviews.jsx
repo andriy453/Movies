@@ -6,15 +6,13 @@ import css from './Reviews.module.css'
 
 function Reviews() {
   const {movieid} = useParams();
-  const  movieidFilter = movieid.slice(1, movieid.length);
   
-const [reviews , setReviews] = useState({});
+const [reviews , setReviews] = useState([]);
 
   useEffect(()=>{
-
     const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/${movieidFilter}/reviews?api_key=9472ead59ab5d905fc1e97a44f85f6b1`,
+      url: `https://api.themoviedb.org/3/movie/${movieid}/reviews?api_key=9472ead59ab5d905fc1e97a44f85f6b1`,
       params: {language: 'en-US', page: '1'},
       headers: {
         accept: 'application/json',
@@ -25,22 +23,22 @@ const [reviews , setReviews] = useState({});
       .request(options)
       .then(function (response) {
         console.log(response.data);
-        setReviews(response.data);
+        setReviews(response.data.results);
       })
       .catch(function (error) {
         console.error(error);
       });
 
-  },[movieidFilter])
+  },[movieid])
   return (
-    <div>
-    <ul>{reviews.results?.map((review)=>{
+       reviews.length === 0 ? (
+    <h3>No Reviews.</h3>
+  ) : ( <ul>{reviews.results?.map((review)=>{
       return <li  key={review.id} className={css.Item} >
       <h4 className={css.Title}>Author:{review.author}</h4>
         <p className={css.Text}>{review.content}</p>
       </li>
-    })}</ul>
-    </div>
+    })}</ul>)
   )
 }
 

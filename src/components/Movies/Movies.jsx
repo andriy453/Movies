@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios';
-import Notiflix from 'notiflix';
+// import Notiflix from 'notiflix';
 import {Link,useLocation , useSearchParams  } from "react-router-dom";
 
 import css from './Movies.module.css'
@@ -11,16 +11,15 @@ function Movies() {
   const [ search ,setSearch] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const inputvalue = searchParams.get('q');
   const location = useLocation();
   useEffect(()=>{
-    if(inputvalue === ' '){
-      return 
-    }
+    const currentQuery = searchParams.get('q');
+    if (!currentQuery) return;
+
     const options = {
       method: 'GET',
       url: 'https://api.themoviedb.org/3/search/movie?api_key=9472ead59ab5d905fc1e97a44f85f6b1',
-      params: {query: `${inputvalue}`, include_adult: 'false', language: 'en-US', page: '1'},
+      params: {query: `${currentQuery}`, include_adult: 'false', language: 'en-US', page: '1'},
       headers: {
         accept: 'application/json',
         Authorization: 'Bearer 9472ead59ab5d905fc1e97a44f85f6b1'
@@ -44,9 +43,9 @@ const hendleSabmit = (e) =>{
     e.preventDefault();  
     setSearch(true);
 
-    if( inputvalue === ''){
-    Notiflix.Notify.failure('please writing value ');
- }
+//     if( currentQuery === ''){
+//     Notiflix.Notify.failure('please writing value ');
+//  }
 
 setTimeout(()=>{
   setSearch(false);
@@ -55,17 +54,17 @@ setTimeout(()=>{
 
 }
 const updateQueryString = e => {
-  if(e.currentTarget.value === ' '){
+  if(e.currentTarget.value.trim() === ''){
    return setSearchParams({})
   }
   setSearchParams({q: e.currentTarget.value.toLowerCase()})
 };
 
  const movie =  searchValue.results;
-
+console.log(searchValue)
   return (
 <>
-    <form  onSubmit={ hendleSabmit} className={css.form}>
+    <form  onSubmit={hendleSabmit} className={css.form}>
     <input  
         onChange={updateQueryString}
       className= {css.input}
@@ -81,12 +80,15 @@ const updateQueryString = e => {
   </form>
 
 
-<ul className={css.conteiner_movie}>{movie?.map((movie) =>{
-  return(
-<li  key={movie.id} > <Link  to={`/movies/${movie.id}`}  state={ location }>{movie.title} </Link></li>
-)}
-)}
-</ul>
+
+<ul className={css.conteiner_movie}>
+{  movie !== null && movie?.map(({id, original_title}) =>{
+    return(
+  <li  key={id} > <Link   state={{ from: location }} to={`/movies/${id}`}>{ original_title} </Link></li>
+  )}
+  )
+}
+</ul> 
 </>
   )
 }

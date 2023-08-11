@@ -1,19 +1,18 @@
-import {useEffect} from 'react'
+import {useEffect, useState } from 'react'
 import axios from 'axios';
-import {Link } from "react-router-dom";
-import { useState } from 'react';
+import {Link,useLocation  } from "react-router-dom";
+
 import css from './Home.module.css'
-
-
-
 
 function Home() {
 
-  const [movies, setMovies] = useState([])
+  const location = useLocation();
+  const [movies, setMovies] = useState([]);
+
   useEffect(()=>{
     const options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/trending/movie/day?api_key=9472ead59ab5d905fc1e97a44f85f6b1`,
+      url: `https://api.themoviedb.org/3/trending/all/day?api_key=9472ead59ab5d905fc1e97a44f85f6b1`,
       params: {language: 'en-US'},
       headers: {
         accept: 'application/json',
@@ -32,13 +31,15 @@ function Home() {
    console.log(movies)
 
   return (
-    <ul className={css.conteiner_movie}>{movies.map((movie) =>{
+    <>
+    <h1>Trending today</h1>
+    <ul className={css.conteiner_movie}>{movies.map(({id,title}) =>{
       return(
-   <li  key={movie.id} > <Link  to={`/movies/:${movie.id}`}>{movie.title} </Link></li>
-    
+   <li  key={id} >  <Link state={{ from: location }} to={`/movies/${id}`}>{title} </Link></li>
 )}
 )}
 </ul>
+</>
   )
 }
 export default Home
