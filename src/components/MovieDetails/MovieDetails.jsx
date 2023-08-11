@@ -1,7 +1,7 @@
 import { useState ,useEffect } from "react";
 import { useParams,useLocation ,Link, Outlet  } from "react-router-dom";
 import axios from 'axios';
-import Button from "../Button/Button";
+// import Button from "../Button/Button";
 import Skeleton from './Skeleton';
 
 import css from './MovieDetails.module.css'
