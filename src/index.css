@@ -7,12 +7,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    height: 100vh;
-    margin: 0;
-    font-family: "Roboto",sans-serif;
-    line-height: 1.5;
-    color: #212121;;
-    padding-bottom: 30px;   
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  color: #212121;
+  padding-bottom: 30px;
 }
 
 code {
@@ -61,7 +61,6 @@ body {
   width: 100%;
 
   font-style: 100%;
-
 
   font-style: 14px;
 
@@ -117,7 +116,7 @@ h6 {
   font-style: inherit;
   font-weight: 400;
 }
-main{
+main {
   padding-left: 30px;
   padding-right: 30px;
 }
