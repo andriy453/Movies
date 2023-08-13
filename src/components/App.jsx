@@ -16,7 +16,6 @@ export const App = () => {
   return (
     <div>
       <header>
-        <nav>
         <Navigation>
           <NavList>
             <NavItem>
@@ -31,7 +30,6 @@ export const App = () => {
             </NavItem>
           </NavList>
         </Navigation>
-        </nav>
       </header>
       <main>
         <Suspense fallback={<div>Loading...</div>}>
