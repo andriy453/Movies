@@ -6,7 +6,6 @@ import css from './Reviews.module.css';
 
 function Reviews() {
   const { movieid } = useParams();
-
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -22,7 +21,6 @@ function Reviews() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         setReviews(response.data.results);
       })
       .catch(function (error) {

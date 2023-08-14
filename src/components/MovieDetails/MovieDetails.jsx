@@ -1,17 +1,15 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
-// import Button from "../Button/Button";
-import Skeleton from './Skeleton';
+import { nanoid } from 'nanoid'
 
+import Skeleton from './Skeleton';
 import css from './MovieDetails.module.css';
 
 function MovieDetails() {
   const { movieid } = useParams();
   const location = useLocation();
-
   const backLinkHref = location.state?.from ?? '/movies';
-
   const [movies, setMovies] = useState([]);
   const [isloadind, setIsloadind] = useState(true);
   useEffect(() => {
@@ -33,12 +31,10 @@ function MovieDetails() {
       .catch(function (error) {
         console.error(error);
       });
-
     // eslint-disable-next-line no-use-before-define
   }, [movieid]);
 
   const genresd = movies.genres?.map(genre => genre.name);
-
   const { original_title, popularity, overview, poster_path } = movies;
   return (
     <>
@@ -63,7 +59,7 @@ function MovieDetails() {
               <h3 className={css.Genres}>Genres</h3>
               <ul className={css.list}>
                 {genresd?.map(genres => {
-                  return <li key={genres.id}>{genres}</li>;
+                  return <li key={nanoid()}>{genres}</li>;
                 })}
               </ul>
             </div>

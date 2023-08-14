@@ -6,8 +6,7 @@ import css from './Cast.module.css';
 
 function Cast() {
   const { movieid } = useParams();
-
-  const [Credits, setCredits] = useState({});
+  const [Credits, setCredits] = useState([]);
 
   useEffect(() => {
     const options = {
@@ -22,7 +21,6 @@ function Cast() {
     axios
       .request(options)
       .then(function (response) {
-        console.log(response.data);
         setCredits(response.data);
       })
       .catch(function (error) {
@@ -32,18 +30,18 @@ function Cast() {
 
   return (
     <ul className={css.list}>
-      {Credits.cast?.map(cas => {
+      {Credits.cast?.map(({id,character,original_name,profile_path}) => {
         return (
-          <li className={css.cart} key={cas.id}>
+          <li className={css.cart} key={id}>
             <img
               width={200}
               height={300}
-              src={`https://image.tmdb.org/t/p/w200/${cas.profile_path}`}
-              alt=""
+              src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
+              alt={original_name}
             />
             <div className={css.conteiner}>
-              <h4 className={css.actor}>Actor:{cas.original_name}</h4>
-              <p>Character:{cas.character}</p>
+              <h4 className={css.actor}>Actor:{original_name}</h4>
+              <p>Character:{character}</p>
             </div>
           </li>
         );

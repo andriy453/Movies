@@ -1,18 +1,15 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
 import { Link, Navigation,NavList,NavItem} from './App.styled';
 
-// import css from '../App.module.css'
-
-// const [searchParams, setSearchParams] = useSearchParams();
-// console.log(searchParams)
 const MovieDetails = lazy(() => import('./MovieDetails'));
 const Home = lazy(() => import('./Home'));
 const Reviews = lazy(() => import('./Reviews'));
 const Cast = lazy(() => import('./Cast'));
 const Movies = lazy(() => import('./Movies'));
 
-export const App = () => {
+function App () {
   return (
     <div>
       <header>
@@ -47,3 +44,5 @@ export const App = () => {
     </div>
   );
 };
+
+export default App;

@@ -6,7 +6,6 @@ import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import css from './Movies.module.css';
 
 function Movies() {
-  // const [ inputvalue ,setInputvalue] = useState('');
   const [searchValue, setSearchValue] = useState([]);
   const [search, setSearch] = useState(false);
 
@@ -70,7 +69,6 @@ function Movies() {
         <input
           onChange={updateQueryString}
           className={css.input}
-          // value={searchParams}
           type="text"
           autocomplete="off"
           autofocus
