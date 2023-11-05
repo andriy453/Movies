@@ -20,24 +20,23 @@ function Home() {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then( (response)=> {
         setMovies(response.data.results);
       })
-      .catch(function (error) {
+      .catch( (error) =>{
         console.error(error);
       });
   }, []);
 
   return (
     <>
-      <h1>Trending today</h1>
+      <h1  className={css.title}>Trending today</h1>
       <ul className={css.conteiner_movie}>
         {movies.map(({ id, title }) => {
           return (
-            <li key={id}>
-              {' '}
-              <Link state={{ from: location }} to={`/movies/${id}`}>
-                {title}{' '}
+            <li className={css.item}  key={id}>
+              <Link  className={css.itemMovie}state={{ from: location }} to={`/movies/${id}`}>
+                {title}
               </Link>
             </li>
           );

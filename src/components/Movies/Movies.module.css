@@ -6,7 +6,6 @@
 
 .form {
   height: 80px;
-  background-color:  #32d30e;
   justify-content: center;
   align-items: center;
   margin-bottom: 40px;
@@ -16,10 +15,19 @@
 .input {
   height: 30px;
   width: 400px;
+  border-bottom:1px solid rgb(239, 239, 239) ;
+  border-top: 1px solid rgb(239, 239, 239);
+  border-left: 1px solid rgb(239, 239, 239);
   border-radius: 7px 0px 0px 7px;
   padding: 15px;
-  color: rgb(255, 255, 255);
-  background-color: blue;
+}
+.itemMovie {
+  color: rgb(55, 75, 255);
+}
+
+.itemMovie:hover,
+.itemMovie:focus {
+  color: rgb(0, 17, 171);
 }
 .button {
   border-radius: 0px 7px 7px 0px;

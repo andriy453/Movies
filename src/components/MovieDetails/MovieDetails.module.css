@@ -1,5 +1,7 @@
 .conteiner {
   display: flex;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 .img {
   margin-right: 50px;
@@ -7,6 +9,7 @@
 .title {
   font-size: 26px;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 .score {
   margin-bottom: 5px;
@@ -33,4 +36,26 @@
   border-radius: 20px;
   color: rgb(136, 136, 136);
   margin-bottom: 12px;
+}
+.inform{
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.conteinerBtn{
+  display: flex;
+  gap: 0px 10px;
+  margin-bottom: 20px;
+}
+.Btn{
+padding: 10px;
+background-color: rgb(162, 169, 253);
+color: rgb(0, 0, 0);
+border-radius: 10px;
+transition: all 350ms;
+}
+.Btn:hover,
+.Btn:focus{
+  background-color: rgb(0, 21, 255);
+    color: rgb(255, 255, 255);
 }

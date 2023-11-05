@@ -24,11 +24,11 @@ function MovieDetails() {
 
     axios
       .request(options)
-      .then(function (response) {
+      .then( (response)=> {
         setMovies(response.data);
       })
       .then(() => setIsloadind(false))
-      .catch(function (error) {
+      .catch( (error) =>{
         console.error(error);
       });
     // eslint-disable-next-line no-use-before-define
@@ -42,13 +42,13 @@ function MovieDetails() {
         <Skeleton />
       ) : (
         <div>
-          <Link to={backLinkHref}>Go back</Link>
+          <Link  className={css.Btn} to={backLinkHref}>Go back</Link>
           <div className={css.conteiner}>
             <img
-              height={300}
-              width={200}
+              height={600}
+              width={400}
               className={css.img}
-              src={`https://image.tmdb.org/t/p/w200/${poster_path}`}
+              src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
               alt={original_title}
             />
             <div>
@@ -63,16 +63,16 @@ function MovieDetails() {
                 })}
               </ul>
             </div>
-          </div>
-          <ul>
-            <h4>Additional information </h4>
+            </div>
+          <h4  className={css.inform}>Additional information </h4>
+          <ul className={css.conteinerBtn} >
             <li>
-              <Link to="cast" state={location.state}>
+              <Link className={css.Btn} to="cast" state={location.state}>
                 cast
               </Link>
             </li>
             <li>
-              <Link to="reviews" state={location.state}>
+              <Link className={css.Btn}  to="reviews" state={location.state}>
                 reviews
               </Link>
             </li>

@@ -70,15 +70,13 @@ function Movies() {
           onChange={updateQueryString}
           className={css.input}
           type="text"
-          autocomplete="off"
-          autofocus
           placeholder="Search movies"
         />
         <button type="submit" className={css.button}>
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Search_Icon.svg/1200px-Search_Icon.svg.png"
-            width="30px"
-            height="30px"
+            width="33px"
+            height="33px"
             alt=""
           />
         </button>
@@ -88,9 +86,8 @@ function Movies() {
           movie?.map(({ id, original_title }) => {
             return (
               <li key={id}>
-                {' '}
-                <Link state={{ from: location }} to={`/movies/${id}`}>
-                  {original_title}{' '}
+                <Link className={css.itemMovie } state = {{ from: location }} to={`/movies/${id}`}>
+                  {original_title}
                 </Link>
               </li>
             );

@@ -9,8 +9,8 @@ export const Link = styled(NavLink)`
   color: black;
   font-weight: 500;
   &.active {
-    color: white;
-    background-color: blue;
+    color: blue;
+
   }
 `;
 export const Navigation = styled.nav`
@@ -18,6 +18,7 @@ export const Navigation = styled.nav`
   box-shadow: 0px 0px 5px 1px rgba(34, 60, 80, 0.19);
 `;
 export const NavList = styled.ul`
+justify-content: center;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;

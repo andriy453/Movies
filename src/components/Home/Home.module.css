@@ -2,3 +2,15 @@
   display: flex;
   flex-direction: column;
 }
+.title{
+  text-align: center;
+  font-weight: 700;
+}
+.itemMovie{
+  color: rgb(55, 75, 255);
+}
+.itemMovie:hover,
+.itemMovie:focus{
+    color: rgb(0, 17, 171);
+}
+
