@@ -2,6 +2,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import { nanoid } from 'nanoid'
+import { TailSpin } from 'react-loader-spinner'
 
 import Skeleton from './Skeleton';
 import css from './MovieDetails.module.css';
@@ -41,7 +42,8 @@ function MovieDetails() {
       {isloadind ? (
         <Skeleton />
       ) : (
-        <div>
+
+        <div>          
           <Link  className={css.Btn} to={backLinkHref}>Go back</Link>
           <div className={css.conteiner}>
             <img
@@ -76,8 +78,18 @@ function MovieDetails() {
                 reviews
               </Link>
             </li>
-          </ul>
-          <Suspense fallback={<div>Loading subpage...</div>}>
+            </ul>
+       
+          <Suspense fallback={     <TailSpin
+  height="80"
+  width="80"
+  color="#4fa94d"
+  ariaLabel="tail-spin-loading"
+  radius="1"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>}>
             <Outlet />
           </Suspense>
         </div>

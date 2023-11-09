@@ -8,6 +8,7 @@ import css from './Movies.module.css';
 function Movies() {
   const [searchValue, setSearchValue] = useState([]);
   const [search, setSearch] = useState(false);
+    const [value, setValue] = useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -56,7 +57,8 @@ function Movies() {
       setSearch(false);
     }, 500);
   };
-  const updateQueryString = e => {
+  const updateQueryString = (e) => {
+        setValue(e.target.value)
     if (e.currentTarget.value.trim() === '') {
       return setSearchParams({});
     }
@@ -70,6 +72,7 @@ function Movies() {
           onChange={updateQueryString}
           className={css.input}
           type="text"
+          value={value}
           placeholder="Search movies"
         />
         <button type="submit" className={css.button}>
