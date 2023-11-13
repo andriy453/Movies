@@ -40,7 +40,7 @@ function Home() {
                 color="#4fa94d"
                 ariaLabel="tail-spin-loading"
                 radius="1"
-                wrapperStyle={{ position: "absolute",right: "50%",}}
+                wrapperStyle={{    position: "absolute",left: "50%",top: "50%",transform:" translate(-50%,-50%)"}}
                 visible={true}
               /> : <ul className={css.conteiner_movie}>
         {movies &&

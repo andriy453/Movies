@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
 
 import css from './Movies.module.css';
 
@@ -87,6 +88,7 @@ function Movies() {
       <ul className={css.conteiner_movie}>
         {movie !== null &&
           movie
+          
             ?.filter(movi => movi.title)
             .map(({ title, id, poster_path, release_date, vote_average }) => {
               const releaseDate = new Date(release_date);
