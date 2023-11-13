@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { TailSpin } from 'react-loader-spinner';
+
 
 import css from './Movies.module.css';
 
