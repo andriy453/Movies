@@ -89,7 +89,7 @@ function MovieDetails() {
                 color="#4fa94d"
                 ariaLabel="tail-spin-loading"
                 radius="1"
-                wrapperStyle={{}}
+                wrapperStyle={{ position: "absolute",right: "50%",}}
                 visible={true}
               />
             }

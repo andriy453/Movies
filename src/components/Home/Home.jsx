@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
+import { TailSpin } from 'react-loader-spinner';
 
 import css from './Home.module.css';
 
 function Home() {
   const location = useLocation();
   const [movies, setMovies] = useState([]);
+  const [isloadind, setIsloadind] = useState(true);
 
   useEffect(() => {
     const options = {
@@ -22,6 +24,7 @@ function Home() {
       .request(options)
       .then(response => {
         setMovies(response.data.results);
+        setIsloadind(false)
       })
       .catch(error => {
         console.error(error);
@@ -31,7 +34,15 @@ function Home() {
   return (
     <>
       <h1 className={css.title}>Trending today</h1>
-      <ul className={css.conteiner_movie}>
+      {isloadind  ?  <TailSpin
+                height="300"
+                width="300"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{ position: "absolute",right: "50%",}}
+                visible={true}
+              /> : <ul className={css.conteiner_movie}>
         {movies &&
           movies
             ?.filter(movi => movi.title)
@@ -65,6 +76,7 @@ function Home() {
               );
             })}
       </ul>
+    }
     </>
   );
 }
