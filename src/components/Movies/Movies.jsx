@@ -8,7 +8,7 @@ import css from './Movies.module.css';
 function Movies() {
   const [searchValue, setSearchValue] = useState([]);
   const [search, setSearch] = useState(false);
-    const [value, setValue] = useState('');
+  const [value, setValue] = useState('');
 
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -20,7 +20,7 @@ function Movies() {
 
     const options = {
       method: 'GET',
-      url: 'https://api.themoviedb.org/3/search/movie?api_key=9472ead59ab5d905fc1e97a44f85f6b1',
+      url: 'https://api.themoviedb.org/3/search/movie?api_key=9472ead59ab5d905fc1e97a44f85f6b1&limit=10',
       params: {
         query: `${currentQuery}`,
         include_adult: 'false',
@@ -57,8 +57,8 @@ function Movies() {
       setSearch(false);
     }, 500);
   };
-  const updateQueryString = (e) => {
-        setValue(e.target.value)
+  const updateQueryString = e => {
+    setValue(e.target.value);
     if (e.currentTarget.value.trim() === '') {
       return setSearchParams({});
     }
@@ -86,15 +86,37 @@ function Movies() {
       </form>
       <ul className={css.conteiner_movie}>
         {movie !== null &&
-          movie?.map(({ id, original_title }) => {
-            return (
-              <li key={id}>
-                <Link className={css.itemMovie } state = {{ from: location }} to={`/movies/${id}`}>
-                  {original_title}
-                </Link>
-              </li>
-            );
-          })}
+          movie
+            ?.filter(movi => movi.title)
+            .map(({ title, id, poster_path, release_date, vote_average }) => {
+              const releaseDate = new Date(release_date);
+              const releaseYear = Number.isNaN(releaseDate)
+                ? 'Unknown'
+                : releaseDate.getFullYear();
+              const userScore = Math.round((Number(vote_average) * 100) / 10);
+              return (
+                <li className={css.item} key={id}>
+                  <Link
+                    className={css.itemMovie}
+                    state={{ from: location }}
+                    to={`/movies/${id}`}
+                  >
+                    <img
+                      height={500}
+                      width={400}
+                      className={css.img}
+                      src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                      alt={title}
+                    />
+                    <div className={css.cartConteiner}>
+                      <h2 className={css.titleMovie}>{title}</h2>
+                      <p className={css.yearMovie}>{releaseYear}</p>
+                      <p className={css.scoreMovie}>User Score: {userScore}%</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
       </ul>
     </>
   );

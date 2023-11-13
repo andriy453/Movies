@@ -5,12 +5,19 @@
 }
 .cart {
   width: 200px;
-  border-radius: 0px 0px 4px 4px;
+  border-radius: 15px;
   background: var(--white, #fff);
   box-shadow:
     0px 2px 1px 0px rgba(46, 47, 66, 0.08),
     0px 1px 1px 0px rgba(46, 47, 66, 0.16),
     0px 1px 6px 0px rgba(46, 47, 66, 0.08);
+    overflow: hidden;
+    transition: all 300ms;
+}
+.cart:hover,
+.cart:focus{
+    scale: 1.03;
+    box-shadow: 4px -27px 69px -6px rgba(0, 0, 0, 0.29);
 }
 .conteiner {
   padding: 10px;

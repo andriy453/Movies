@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { Link, Navigation,NavList,NavItem} from './App.styled';
+import { Link, Navigation, NavList, NavItem } from './App.styled';
 
 const MovieDetails = lazy(() => import('./MovieDetails'));
 const Home = lazy(() => import('./Home'));
@@ -9,21 +9,17 @@ const Reviews = lazy(() => import('./Reviews'));
 const Cast = lazy(() => import('./Cast'));
 const Movies = lazy(() => import('./Movies'));
 
-function App () {
+function App() {
   return (
     <div>
       <header>
         <Navigation>
           <NavList>
             <NavItem>
-              <Link to="/">
-                Home
-              </Link>
+              <Link to="/">Home</Link>
             </NavItem>
             <NavItem>
-              <Link to="/movies">
-                Movies
-              </Link>
+              <Link to="/movies">Movies</Link>
             </NavItem>
           </NavList>
         </Navigation>
@@ -43,6 +39,6 @@ function App () {
       </main>
     </div>
   );
-};
+}
 
 export default App;

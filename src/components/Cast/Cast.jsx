@@ -30,7 +30,7 @@ function Cast() {
 
   return (
     <ul className={css.list}>
-      {Credits.cast?.map(({id,character,original_name,profile_path}) => {
+      {Credits.cast?.map(({ id, character, original_name, profile_path }) => {
         return (
           <li className={css.cart} key={id}>
             <img

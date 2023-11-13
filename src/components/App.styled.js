@@ -1,4 +1,4 @@
-import styled from 'styled-components'; 
+import styled from 'styled-components';
 // import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
@@ -10,7 +10,6 @@ export const Link = styled(NavLink)`
   font-weight: 500;
   &.active {
     color: blue;
-
   }
 `;
 export const Navigation = styled.nav`
@@ -18,7 +17,7 @@ export const Navigation = styled.nav`
   box-shadow: 0px 0px 5px 1px rgba(34, 60, 80, 0.19);
 `;
 export const NavList = styled.ul`
-justify-content: center;
+  justify-content: center;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;

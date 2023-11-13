@@ -1,8 +1,8 @@
 import { useState, useEffect, Suspense } from 'react';
 import { useParams, useLocation, Link, Outlet } from 'react-router-dom';
 import axios from 'axios';
-import { nanoid } from 'nanoid'
-import { TailSpin } from 'react-loader-spinner'
+import { nanoid } from 'nanoid';
+import { TailSpin } from 'react-loader-spinner';
 
 import Skeleton from './Skeleton';
 import css from './MovieDetails.module.css';
@@ -25,11 +25,11 @@ function MovieDetails() {
 
     axios
       .request(options)
-      .then( (response)=> {
+      .then(response => {
         setMovies(response.data);
       })
       .then(() => setIsloadind(false))
-      .catch( (error) =>{
+      .catch(error => {
         console.error(error);
       });
     // eslint-disable-next-line no-use-before-define
@@ -42,15 +42,16 @@ function MovieDetails() {
       {isloadind ? (
         <Skeleton />
       ) : (
-
-        <div>          
-          <Link  className={css.Btn} to={backLinkHref}>Go back</Link>
+        <div>
+          <Link className={css.Btn} to={backLinkHref}>
+            Go back
+          </Link>
           <div className={css.conteiner}>
             <img
               height={600}
               width={400}
               className={css.img}
-              src={`https://image.tmdb.org/t/p/w400/${poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
               alt={original_title}
             />
             <div>
@@ -65,31 +66,34 @@ function MovieDetails() {
                 })}
               </ul>
             </div>
-            </div>
-          <h4  className={css.inform}>Additional information </h4>
-          <ul className={css.conteinerBtn} >
+          </div>
+          <h4 className={css.inform}>Additional information </h4>
+          <ul className={css.conteinerBtn}>
             <li>
               <Link className={css.Btn} to="cast" state={location.state}>
                 cast
               </Link>
             </li>
             <li>
-              <Link className={css.Btn}  to="reviews" state={location.state}>
+              <Link className={css.Btn} to="reviews" state={location.state}>
                 reviews
               </Link>
             </li>
-            </ul>
-       
-          <Suspense fallback={     <TailSpin
-  height="80"
-  width="80"
-  color="#4fa94d"
-  ariaLabel="tail-spin-loading"
-  radius="1"
-  wrapperStyle={{}}
-  wrapperClass=""
-  visible={true}
-/>}>
+          </ul>
+
+          <Suspense
+            fallback={
+              <TailSpin
+                height="300"
+                width="300"
+                color="#4fa94d"
+                ariaLabel="tail-spin-loading"
+                radius="1"
+                wrapperStyle={{}}
+                visible={true}
+              />
+            }
+          >
             <Outlet />
           </Suspense>
         </div>

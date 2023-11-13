@@ -20,27 +20,50 @@ function Home() {
 
     axios
       .request(options)
-      .then( (response)=> {
+      .then(response => {
         setMovies(response.data.results);
       })
-      .catch( (error) =>{
+      .catch(error => {
         console.error(error);
       });
   }, []);
 
   return (
     <>
-      <h1  className={css.title}>Trending today</h1>
+      <h1 className={css.title}>Trending today</h1>
       <ul className={css.conteiner_movie}>
-        {movies.map(({ id, title }) => {
-          return (
-            <li className={css.item}  key={id}>
-              <Link  className={css.itemMovie}state={{ from: location }} to={`/movies/${id}`}>
-                {title}
-              </Link>
-            </li>
-          );
-        })}
+        {movies &&
+          movies
+            ?.filter(movi => movi.title)
+            .map(({ title, id, poster_path, release_date, vote_average }) => {
+              const releaseDate = new Date(release_date);
+              const releaseYear = Number.isNaN(releaseDate)
+                ? 'Unknown'
+                : releaseDate.getFullYear();
+              const userScore = Math.round((Number(vote_average) * 100) / 10);
+              return (
+                <li className={css.item} key={id}>
+                  <Link
+                    className={css.itemMovie}
+                    state={{ from: location }}
+                    to={`/movies/${id}`}
+                  >
+                    <img
+                      height={500}
+                      width={400}
+                      className={css.img}
+                      src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                      alt={title}
+                    />
+                    <div className={css.cartConteiner}>
+                      <h2 className={css.titleMovie}>{title}</h2>
+                      <p className={css.yearMovie}>{releaseYear}</p>
+                      <p className={css.scoreMovie}>User Score: {userScore}%</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
       </ul>
     </>
   );
