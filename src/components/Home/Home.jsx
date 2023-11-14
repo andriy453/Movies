@@ -60,8 +60,8 @@ function Home() {
                     to={`/movies/${id}`}
                   >
                     <img
-                      height={500}
-                      width={400}
+                      height={450}
+                      width={300}
                       className={css.img}
                       src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                       alt={title}

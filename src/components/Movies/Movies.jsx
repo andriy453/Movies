@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-
+ 
 
 import css from './Movies.module.css';
 
@@ -103,13 +103,19 @@ function Movies() {
                     state={{ from: location }}
                     to={`/movies/${id}`}
                   >
-                    <img
-                      height={500}
-                      width={400}
+                {poster_path ? <img
+                      height={450}
+                      width={300}
                       className={css.img}
                       src={`https://image.tmdb.org/t/p/w500${poster_path}`}
                       alt={title}
-                    />
+                    /> :     <img
+                      height={450}
+                      width={300}
+                      className={css.img}
+                      src={`https://rukminim1.flixcart.com/image/300/300/kzx1a4w0/sticker/m/r/i/medium-404-error-not-found-0-1-an-sb6528-sign-ever-original-imagbtu8ztxntpkx.jpeg`}
+                      alt={title}
+                    /> }
                     <div className={css.cartConteiner}>
                       <h2 className={css.titleMovie}>{title}</h2>
                       <p className={css.yearMovie}>{releaseYear}</p>

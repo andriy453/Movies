@@ -33,12 +33,17 @@ function Cast() {
       {Credits.cast?.map(({ id, character, original_name, profile_path }) => {
         return (
           <li className={css.cart} key={id}>
-            <img
+{profile_path ? <img
               width={200}
               height={300}
               src={`https://image.tmdb.org/t/p/w200/${profile_path}`}
               alt={original_name}
-            />
+            /> : <img
+              width={200}
+              height={300}
+              src={`https://rukminim1.flixcart.com/image/300/300/kzx1a4w0/sticker/m/r/i/medium-404-error-not-found-0-1-an-sb6528-sign-ever-original-imagbtu8ztxntpkx.jpeg`}
+              alt={original_name}
+            />}
             <div className={css.conteiner}>
               <h4 className={css.actor}>Actor:{original_name}</h4>
               <p>Character:{character}</p>

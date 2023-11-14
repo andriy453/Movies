@@ -6,10 +6,15 @@ export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: black;
+  color: rgb(159, 159, 159);
   font-weight: 500;
+    transition: all 300ms;
   &.active {
-    color: blue;
+    color: white;
+  }
+    
+  &:hover{
+    color: white;
   }
 `;
 export const Navigation = styled.nav`
@@ -25,8 +30,7 @@ export const NavList = styled.ul`
   display: flex;
   gap: 18px;
   padding: 14px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
+ background-color: black;
 `;
 
 export const NavItem = styled.li`
